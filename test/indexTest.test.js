@@ -1,5 +1,6 @@
-const { document } = require('./helpers')
+const { document, dom } = require('./helpers')
 //const { expect } = require('chai')
+require ('../index.js') 
 
 // Sample test suite for JavaScript event handling
 describe('Handling Events with JavaScript', () => {
@@ -9,7 +10,7 @@ describe('Handling Events with JavaScript', () => {
   let keyPressDisplay
   let textInputDisplay
 
-  before(() => {
+  beforeEach(() => {
     changeColorButton = document.getElementById('changeColorButton')
     resetColorButton = document.getElementById('resetColorButton')
     textInput = document.getElementById('textInput')
@@ -18,15 +19,15 @@ describe('Handling Events with JavaScript', () => {
   })
 
   it('should select the changeColorButton element', () => {
-    expect(changeColorButton).to.not.be.null
+    expect(changeColorButton).not.toBeNull()
   })
 
   it('should select the resetColorButton element', () => {
-    expect(resetColorButton).to.not.be.null
+    expect(resetColorButton).not.toBeNull()
   })
 
   it('should select the textInput element', () => {
-    expect(textInput).to.not.be.null
+    expect(textInput).not.toBeNull()
   })
 
   it('should display the key pressed by the user', () => {
@@ -35,7 +36,7 @@ describe('Handling Events with JavaScript', () => {
     document.dispatchEvent(event)
 
     // Check if the keyPressDisplay has been updated
-    expect(keyPressDisplay.textContent).to.include('A')
+    expect(keyPressDisplay.textContent).toContain('A')
   })
 
   it('should display user input in real-time', () => {
@@ -45,6 +46,6 @@ describe('Handling Events with JavaScript', () => {
     textInput.dispatchEvent(event)
 
     // Check if the textInputDisplay has been updated
-    expect(textInputDisplay.textContent).to.include('Hello')
+    expect(textInputDisplay.textContent).toContain('Hello')
   })
 })
